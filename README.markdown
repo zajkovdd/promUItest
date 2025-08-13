@@ -8,7 +8,7 @@
 
 - Automated UI tests for key functionalities of promminer.ru.
 - Support for search functionality testing.
-- Support for product comparison testing.
+- Support for product comparison testing (e.g., ASICs).
 - Detailed test reporting with Allure.
 - Modular page object model (POM) design for maintainability.
 
@@ -40,7 +40,7 @@ Before running the tests, ensure you have the following installed:
    pip install -r requirements.txt
    ```
 
-   Ensure you have a `requirements.txt` file with the following dependencies:
+   Example `requirements.txt`:
    ```
    pytest
    selenium
@@ -54,7 +54,7 @@ Before running the tests, ensure you have the following installed:
 ## Usage
 
 1. **Run tests**:
-   To execute all tests, use the following command:
+   To execute all tests, run from the project root:
    ```bash
    pytest tests/
    ```
@@ -68,23 +68,54 @@ Before running the tests, ensure you have the following installed:
 
 3. **Test structure**:
    - Tests are located in the `tests/` directory.
-   - Page objects are defined in helper classes (e.g., `BasePageHelper`, `CatalogPageHelper`, `ComparePageHelper`).
-   - Example test: `test_compare_two_asic_positive` verifies the comparison of two ASIC products.
+   - Page objects are defined in the `pages/` directory (e.g., `BasePageHelper`, `CatalogPageHelper`, `ComparePageHelper`, `SearchPageHelper`).
+   - Example tests:
+     - `test_compare.py`: Verifies the comparison of two ASIC products.
+     - `test_search.py`: Tests the search functionality.
 
 ## Project Structure
 
 ```
 promUItest/
 │
+├── pages/                   # Page object models
+│   ├── __init__.py         # Makes pages a Python module
+│   ├── BasePage.py        # Base page helper
+│   ├── CatalogPage.py     # Catalog page helper
+│   ├── ComparePage.py     # Compare page helper
+│   ├── SearchPage.py      # Search page helper
 ├── tests/                   # Test cases
-│   └── test_compare_asic.py # Example test for ASIC comparison
-├── helpers/                 # Page object models
-│   ├── base_page.py        # Base page helper
-│   ├── catalog_page.py     # Catalog page helper
-│   └── compare_page.py     # Compare page helper
+│   ├── conftest.py         # Pytest fixtures (e.g., browser)
+│   ├── test_compare.py     # Test for ASIC comparison
+│   └── test_search.py      # Test for search functionality
 ├── requirements.txt         # Project dependencies
 └── README.md               # This file
 ```
+
+## Troubleshooting
+
+- **ModuleNotFoundError: No module named 'pages'**:
+  - Ensure the `pages/` directory exists and contains `BasePage.py`, `CatalogPage.py`, `ComparePage.py`, and `SearchPage.py`.
+  - Verify that `pages/__init__.py` exists (can be empty).
+  - Check imports in test files:
+    ```python
+    from pages.BasePage import BasePageHelper
+    from pages.CatalogPage import CatalogPageHelper
+    from pages.ComparePage import ComparePageHelper
+    from pages.SearchPage import SearchPageHelper
+    ```
+  - Add the project root to `PYTHONPATH`:
+    ```bash
+    export PYTHONPATH=$PYTHONPATH:/Users/dmitrijzajkov/PycharmProjects/promUItest
+    ```
+  - In PyCharm, add the project root to the Python interpreter paths:
+    - File > Settings > Project > Python Interpreter > Show All > Add Content Root.
+
+- **ModuleNotFoundError: No module named 'core'**:
+  - The `browser` fixture is defined in `tests/conftest.py`. Ensure imports in test files use:
+    ```python
+    from conftest import browser
+    ```
 
 ## Contributing
 
