@@ -1,15 +1,14 @@
-from gettext import Catalog
+
 
 import allure
 import pytest
 from allure_commons.types import AttachmentType
 from selenium.common import WebDriverException, TimeoutException
 
-from core.BaseFunctions import browser
+from conftest import browser
 from pages.BasePage import BasePageHelper
 from pages.CatalogPage import CatalogPageHelper
 from pages.ComparePage import ComparePageHelper
-
 
 BASE_URL = 'https://promminer.ru/'
 SEARCH_TEXT = 'S19J'

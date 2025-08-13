@@ -3,7 +3,7 @@ import pytest
 from allure_commons.types import AttachmentType
 from selenium.common import WebDriverException, TimeoutException
 
-from core.BaseFunctions import browser
+from conftest import browser
 from pages.BasePage import BasePageHelper
 from pages.SearchPage import SearchPageHelper
 
