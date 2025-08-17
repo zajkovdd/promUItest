@@ -55,6 +55,9 @@ class BasePageHelper:
     def click_compare(self):
         self.find_element(BasePageLocators.COMPARE_BUTTON).click()
 
+    def click_favourite(self):
+        self.find_element(BasePageLocators.FAVOURITE_BUTTON).click()
+
 
 
 

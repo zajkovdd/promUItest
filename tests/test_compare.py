@@ -11,7 +11,6 @@ from pages.CatalogPage import CatalogPageHelper
 from pages.ComparePage import ComparePageHelper
 
 BASE_URL = 'https://promminer.ru/'
-SEARCH_TEXT = 'S19J'
 
 @allure.suite('Тестирование Сравнения')
 @allure.title('Позитивный сценарий: Добавление двух ASIC для сравнения')

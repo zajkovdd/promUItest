@@ -9,7 +9,9 @@ from pages.BasePage import BasePageHelper
 class CatalogPageLocators:
     PRICE_LOCATOR = (By.XPATH, '//*[@id="main"]/div[5]/div[4]/div[2]/div/div/div/div/div[2]/div[2]/div/div/div[1]/form/div[2]/div[1]/div[1]/text()')
     FIRST_GOOD_COMPARE_BUTTON = (By.XPATH, '//*[@id="bx_3966226736_5253"]/div/div[4]/div/div[2]/div[2]/a')
+    FIRST_GOOD_FAVOURITE_BUTTON = (By.XPATH, '//*[@id="bx_3966226736_5253"]/div/div[4]/div/div[2]/div[1]/a/i')
     SECOND_GOOD_COMPARE_BUTTON = (By.XPATH, '//*[@id="bx_3966226736_5234"]/div/div[4]/div/div[2]/div[2]/a')
+    SECOND_GOOD_FAVOURITE_BUTTON = (By.XPATH, '//*[@id="bx_3966226736_5234"]/div/div[4]/div/div[2]/div[1]/a/i')
 
 class CatalogPageHelper(BasePageHelper):
     def __init__(self, driver):
@@ -25,6 +27,12 @@ class CatalogPageHelper(BasePageHelper):
 
     def click_compare_second_button(self):
         self.find_element(CatalogPageLocators.SECOND_GOOD_COMPARE_BUTTON).click()
+
+    def click_favourite_first_button(self):
+        self.find_element(CatalogPageLocators.FIRST_GOOD_FAVOURITE_BUTTON).click()
+
+    def click_favourite_second_button(self):
+        self.find_element(CatalogPageLocators.SECOND_GOOD_FAVOURITE_BUTTON).click()
 
 
 
